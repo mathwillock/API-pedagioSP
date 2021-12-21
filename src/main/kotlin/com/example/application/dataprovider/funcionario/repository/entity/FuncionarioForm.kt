@@ -1,18 +1,14 @@
-package com.example.application.dataprovider.registro.repository.entity
+package com.example.application.dataprovider.funcionario.repository.entity
 
-import java.math.BigDecimal
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
 import javax.persistence.GenerationType
 import javax.persistence.Id
 
 @Entity
-data class Registro(
+data class FuncionarioForm(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long,
-    val idCarro: Long,
-    val idGuiche: Long,
-    val idFuncionario: Long,
-    val valor: BigDecimal
+    val nome: String
 )

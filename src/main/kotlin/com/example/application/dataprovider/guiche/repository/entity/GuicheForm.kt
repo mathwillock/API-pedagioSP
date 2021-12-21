@@ -1,4 +1,4 @@
-package com.example.application.dataprovider.carro.repository.entity
+package com.example.application.dataprovider.guiche.repository.entity
 
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
@@ -6,10 +6,12 @@ import javax.persistence.GenerationType
 import javax.persistence.Id
 
 @Entity
-data class Carro (
+data class GuicheForm (
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long,
-    val modelo: String,
-    val eixo: Int
+    val idFuncionario: Long,
 )
+
+
+

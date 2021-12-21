@@ -4,4 +4,7 @@ import com.example.domain.carro.entity.Carro
 
 interface CarroGateway {
     fun findById(id: Long): Carro
+
+    fun save(carro: Carro)
+
 }
