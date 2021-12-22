@@ -1,9 +1,11 @@
 package com.example.application.entrypoint
 
 import com.example.application.dataprovider.carro.repository.entity.CarroForm
+import com.example.domain.carro.entity.Carro
 import com.example.domain.carro.usecase.CarroAll
 import com.example.domain.carro.usecase.CarroAllDelete
 import com.example.domain.carro.usecase.CarroAllSave
+import com.example.domain.carro.usecase.CarroAllUpdate
 import io.micronaut.http.HttpResponse
 import io.micronaut.http.annotation.*
 
@@ -11,7 +13,8 @@ import io.micronaut.http.annotation.*
 class CarroEntrypoint(
     val carroAll: CarroAll,
     val carroAllSave: CarroAllSave,
-    val carroAllDelete: CarroAllDelete
+    val carroAllDelete: CarroAllDelete,
+    val carroAllUpdate: CarroAllUpdate
 
 ) {
 
@@ -40,5 +43,10 @@ class CarroEntrypoint(
 
         return "Carro $carro do id:$idCarro deletado!"
     }
+
+    @Put("/atualizar")
+    fun updateCarro(@Body carro: Carro) = HttpResponse.ok(
+        carroAllUpdate.process(carro.id, carro.modelo, carro.eixo)
+    )
 
 }

@@ -1,16 +1,16 @@
 package com.example.application.dataprovider.guiche.repository.entity
 
-import javax.persistence.Entity
-import javax.persistence.GeneratedValue
-import javax.persistence.GenerationType
-import javax.persistence.Id
+import com.example.application.dataprovider.funcionario.repository.entity.FuncionarioForm
+import javax.persistence.*
 
 @Entity
 data class GuicheForm (
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long,
-    val idFuncionario: Long,
+
+    @ManyToOne
+    val funcionario: FuncionarioForm,
 )
 
 

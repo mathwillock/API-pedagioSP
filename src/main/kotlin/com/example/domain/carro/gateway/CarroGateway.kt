@@ -9,4 +9,6 @@ interface CarroGateway {
 
     fun delete(id: Long)
 
+    fun update(carro: Carro)
+
 }

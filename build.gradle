@@ -43,6 +43,23 @@ dependencies {
 
     runtimeOnly("com.fasterxml.jackson.module:jackson-module-kotlin")
 
+    implementation 'org.mapstruct:mapstruct:1.4.2.Final'
+
+    annotationProcessor 'org.mapstruct:mapstruct-processor:1.4.2.Final'
+
+
+}
+
+kapt {
+    arguments {
+        arg("micronaut.processing.incremental", true)
+        arg("micronaut.processing.annotations", "com.example.*")
+        arg("micronaut.processing.group", "com.example")
+        arg("micronaut.processing.module", "API-pedagioSP")
+
+        arg("mapstruct.unmappedTargetPolicy", "ERROR")
+        arg("mapstruct.defaultComponentModel", "jsr330")
+    }
 }
 
 
