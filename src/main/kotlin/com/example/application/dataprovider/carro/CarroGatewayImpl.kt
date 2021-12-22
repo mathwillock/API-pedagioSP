@@ -21,4 +21,11 @@ class CarroGatewayImpl(private val carroRepository: CarroRepository): CarroGatew
 
     }
 
+    override fun delete(id: Long) {
+        val carro = carroRepository.findById(id).get()
+
+        carroRepository.delete(carro)
+    }
+
+
 }

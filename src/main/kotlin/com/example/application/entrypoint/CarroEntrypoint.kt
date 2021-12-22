@@ -2,6 +2,7 @@ package com.example.application.entrypoint
 
 import com.example.application.dataprovider.carro.repository.entity.CarroForm
 import com.example.domain.carro.usecase.CarroAll
+import com.example.domain.carro.usecase.CarroAllDelete
 import com.example.domain.carro.usecase.CarroAllSave
 import io.micronaut.http.HttpResponse
 import io.micronaut.http.annotation.*
@@ -9,7 +10,9 @@ import io.micronaut.http.annotation.*
 @Controller("/carro")
 class CarroEntrypoint(
     val carroAll: CarroAll,
-    val carroAllSave: CarroAllSave
+    val carroAllSave: CarroAllSave,
+    val carroAllDelete: CarroAllDelete
+
 ) {
 
     @Get("/{idCarro}")
@@ -24,6 +27,18 @@ class CarroEntrypoint(
          )
 
         return "${carro.modelo} salvo!"
+    }
+
+    @Delete("/deletar/{idCarro}")
+    fun deleteCarro(@QueryValue idCarro: Long): String {
+        val car = carroAll.process(idCarro)
+        val carro = car.modeloCarro
+
+        HttpResponse.ok(
+            carroAllDelete.process(idCarro)
+        )
+
+        return "Carro $carro do id:$idCarro deletado!"
     }
 
 }
